@@ -5,7 +5,7 @@ Test Teardown      Close Browser
 
 *** Variable ***
 ${link}          https://opensource-demo.orangehrmlive.com/
-${browser}       headlessFirefox
+${browser}       Firefox
 
 *** Test Cases ***    
 Login test with valid credential   
@@ -15,6 +15,7 @@ Login test with valid credential
     Enter txtPassword
     Click on the login Button
     Verify dashboard for User
+    Verify logout from the application
 
 *** Keywords ***
 Enter txtUsername  
@@ -31,3 +32,7 @@ Verify dashboard for User
     Log To Console          ${url}
     Should Contain        ${url}      dashboard
 
+Verify logout from the application
+    Click Link      partial link=Welcome
+    Sleep   10s
+    Click Link      link:Logout
